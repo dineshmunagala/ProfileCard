@@ -27,7 +27,7 @@ const ProfileCard = ({
             {followed ? "✅ Following" : "+ Follow"}
           </button>
         </div>
-        <button className="delete-btn" onClick={onDelete}>Delete</button>
+        <button className="delete-btn" onClick={() => onDelete()}>Delete</button>
     </div>
   )
 }

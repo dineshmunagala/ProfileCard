@@ -11,11 +11,11 @@ const MemberList = ({members,onDelete,onLike,onFollow}) => {
         {members.length === 0 ? (
             <p className='empty'>No Team members added yet</p>
         )  : (
-            members.map ((member,index) => 
+            members.map ((member) => 
             <ProfileCard 
             key ={member.id}
             {...member}
-            onDelete = {() => onDelete(index)}
+            onDelete = {() => onDelete(member.id)}
             onLike = {() => onLike(member.id)}
             onFollow = {() => onFollow(member.id)}
             />
