@@ -3,13 +3,15 @@ import Banner from '../components/Banner';
 import Memberform from '../components/Memberform';
 // import MemberList from '../components/MemberList';
 import Popup from '../components/Popup';
+import DashboardLayout from '../components/DashboardLayout';
 
 const Home = ({ members, addMember, deleteMember, toggleLike, toggleFollow }) => {
   const [popupMember, setPopupMember] = useState(null);
 
   return (
     <div>
-      <Banner />
+      <DashboardLayout>
+      {/* <Banner /> */}
      <Memberform
          onAdd={async (m) => {
          const savedMember = await addMember(m);
@@ -19,6 +21,7 @@ const Home = ({ members, addMember, deleteMember, toggleLike, toggleFollow }) =>
           }, 10000);          
       }}
       />
+      
       {/* <MemberList
         members={members}
         onDelete={deleteMember}
@@ -30,11 +33,12 @@ const Home = ({ members, addMember, deleteMember, toggleLike, toggleFollow }) =>
         <Popup
           member={popupMember}
           onClose={() => setPopupMember(null)}
-          // onDelete={() => deleteMember(popupMember.id)}
-          // onLike={() => toggleLike(popupMember.id)}
-          // onFollow={() => toggleFollow(popupMember.id)}
+          onDelete={() => deleteMember(popupMember.id)}
+          onLike={() => toggleLike(popupMember.id)}
+          onFollow={() => toggleFollow(popupMember.id)}
         />
       )}
+      </DashboardLayout>
     </div>
   );
 };

@@ -10,7 +10,11 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 
+
+
 const API_URL = "http://localhost:8083/api/members";
+
+
 
 const App = () => {
   const [members, setMembers] = useState([]);
@@ -40,8 +44,9 @@ const App = () => {
   const deleteMember = async (id) => {
     try {
       await axios.delete(`${API_URL}/${id}`);
-      setMembers(prev => prev.filter(m => m.id !== id));
-    } catch (err) {
+      setMembers((prev) => prev.filter((m) => m.id !== id));
+   
+   } catch (err) {
       console.log(err);
     }
   };
@@ -67,7 +72,7 @@ const App = () => {
   if (!loaded) return <p>Loading...</p>; 
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
 
       <Routes>
         <Route
@@ -90,10 +95,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProfileList
+                // members={members}
+                // onDelete={deleteMember}
+                // onLike={toggleLike}
+                // onFollow={toggleFollow}
                 members={members}
-                onDelete={deleteMember}
-                onLike={toggleLike}
-                onFollow={toggleFollow}
+                deleteMember={deleteMember}
+                toggleLike={toggleLike}
+                toggleFollow={toggleFollow}
               />
             </ProtectedRoute>
           }
@@ -103,7 +112,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };

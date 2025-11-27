@@ -5,6 +5,7 @@ import "../styles/Auth.css";
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext";
 
+
 const LOGIN_URL = "http://localhost:8083/api/auth/login";
 
 function Login() {

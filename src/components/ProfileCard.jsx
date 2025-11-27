@@ -2,6 +2,7 @@ import React from 'react'
 import "../App.css";
 
 const ProfileCard = ({
+    id,
     name,
     bio,
     image,
@@ -27,7 +28,7 @@ const ProfileCard = ({
             {followed ? "✅ Following" : "+ Follow"}
           </button>
         </div>
-        <button className="delete-btn" onClick={() => onDelete()}>Delete</button>
+        <button className="delete-btn" onClick={() => onDelete(id)}>Delete</button>
     </div>
   )
 }
